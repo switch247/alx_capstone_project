@@ -1,4 +1,9 @@
 # Quiz Game
+    <!-- 
+    create venv ->  python -m venv venv
+    activate venv ->  venv\Scripts\activate
+    install requirements -> pip install -r requirements.txt 
+    -->
 
 ## Project Overview:
 The Quiz Game is a web application that allows users to test their knowledge in various subjects through multiple-choice questions. The purpose of the project is to provide an interactive and engaging platform for users to challenge themselves and learn new information. The goal is to create an enjoyable and educational experience for users while promoting knowledge retention and improvement.
@@ -20,7 +25,8 @@ The Quiz Game is a web application that allows users to test their knowledge in 
 - SQLAlchemy (Python SQL toolkit and Object-Relational Mapping)
 
 ## Screenshots or Demo:
-[screenshot](https://lucid.app/lucidchart/e84b8632-8efd-485a-a98d-5ef0178719dc/edit?viewport_loc=-976%2C-60%2C3601%2C1601%2C0_0&invitationId=inv_f44c8728-b121-44a3-8b43-52883079d562)
+[FlowChart](https://lucid.app/lucidchart/e84b8632-8efd-485a-a98d-5ef0178719dc/edit?viewport_loc=-976%2C-60%2C3601%2C1601%2C0_0&invitationId=inv_f44c8728-b121-44a3-8b43-52883079d562)
+
 [Link to Live Demo](https://www.example.com)
 
 ## Roadmap and Future Enhancements:
@@ -32,7 +38,7 @@ The Quiz Game is a web application that allows users to test their knowledge in 
 
 ## Contact Information:
 For any questions or feedback, please feel free to reach out to the project maintainer:
-- Name: [Your Name]
-- Email: [Your Email]
-- GitHub: [Your GitHub Profile]
+- Name: [Abel Bekele Meaza]
+- Email: [abelbeworking245@gmail.com]
+- GitHub: [https://www.github.com/switch247]
 - LinkedIn: [Your LinkedIn Profile]

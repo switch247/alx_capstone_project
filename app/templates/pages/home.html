@@ -1,0 +1,37 @@
+
+{%extends 'base.html'%}
+
+{%block title%}
+Quiz App - Home
+{%endblock%}
+
+
+
+
+
+{%block body%}
+
+
+{%include 'components/header.html'%}
+
+<div class="container vh-80">
+    <h1>Welcome to the Quiz App</h1>
+    <h2>Select a Quiz</h2>
+    <div class="row">
+        {% for quiz in quizzes %}
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="{{ quiz.image }}" alt="Quiz Image">
+                <div class="card-body">
+                    <h5 class="card-title">Quiz {{ loop.index }}</h5>
+                    <p class="card-text">Number of Questions: {{ quiz.num_questions }}</p>
+                    <a href="/quiz/{{ loop.index }}" class="btn btn-primary">Take Quiz</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{%include 'components/footer.html'%}
+{%endblock%}
