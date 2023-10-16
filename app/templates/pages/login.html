@@ -1,32 +1,57 @@
-
 {%extends 'base.html'%}
 
 {%block title%}
-
+Login Page
 {%endblock%}
 
 {%block body%}
+<head>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
 
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h2>Login</h2>
-            <form method="post"  action="{{ url_for('auth.login') }}">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
-                </div>
-                <span id="error"></span>
-                <br>
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
+  <section>
+    <div class="container ">
+      <div class="left">
+        <div class="logo">
+          <img src="images/logo.png" alt="">
         </div>
-    </div>
-</div>
+        <div class="text">
+          <h1>Go all the way. <br>
+            Don't give up. Ever.<br>
+            It's that simple.</h1>
+        </div>
+        <ul>
+          <li> <a href="#">Home</a> </li>
+          <li> <a href="#">About</a> </li>
+          <li> <a href="#">Contact</a> </li>
+        </ul>
+      </div>
+      <div class="right">
+        <h3>Welcome Back!</h3>
+        <h2>Live the experience</h2>
 
-{%endblock%}
+        <form method="post"  action="{{ url_for('auth.login') }}">
+          <div class="box">
+            <label>Email</label>
+            <i class="fas fa-envelope-open"></i>
+            <input type="text" placeholder="username" name="username" >
+          </div>
+          <div class="box">
+            <label>Password</label>
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" placeholder="Enter your password">
+          </div>
+          <div class="box flex">
+            <div class="input flex">
+              <input type="checkbox">
+              <span>Remember me</span>
+            </div>
+            <a href="#">Forget password?</a>
+          </div>
+          <button>Log in</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  {%endblock%}

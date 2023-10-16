@@ -29,9 +29,9 @@ Quiz App - Quiz
 
 {%include 'components/header.html'%}
 
-<p id="p" class="hidden" style="display: none;">{{quiz}}</p>
-
-    <div class="container vh-80">
+<section class="blog">
+    <div class="container">
+        <p id="p" class="hidden" style="display: none;">{{quiz}}</p>
         <h1>Quiz</h1>
         <div id="progress-bar">
             <div id="progress" style="width: 0;"></div>
@@ -49,6 +49,8 @@ Quiz App - Quiz
 
         <div id="result"></div>
     </div>
+
+</section>
 
     <script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
 

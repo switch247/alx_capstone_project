@@ -1,0 +1,30 @@
+{%block body%}
+<section class="blog top">
+    <div class="container">
+        <div class="heading">
+            <h1>Latest quizzes</h1>
+        </div>
+
+        <div class="content grid mtop">
+            {% for quiz in quizzes %}
+            <div class="box">
+                <img src="{{ quiz.image }}" alt="">
+                <div class="text">
+                    <h4> Quiz {{ loop.index }}</h4>
+                    <p> <i></i>Number of Questions: {{ quiz.num_questions }}</p>
+
+                    <div class="link">
+                        <a href="/quiz/{{ loop.index }}" class="btn btn-primary">Take Quiz</a>
+                        <span>By admin, Jun 05, 2023</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+   
+
+</section>
+
+{%endblock%}

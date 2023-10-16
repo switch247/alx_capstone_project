@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var q= document.getElementById('p').innerText
     var validJsonString = q.replace(/'/g, '"');
     var quiz = JSON.parse(validJsonString)
+    // var quiz =q
     console.log(quiz)
     q.innerText=''
     const progress = document.getElementById('progress');
@@ -16,20 +17,28 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 0;
 
     function loadQuestion() {
+        // {'question': 'What is the capital of France?', 'options': ['Paris', 'London', 'Berlin', 'Madrid'], 'correct_answer': 'Paris'}
+  // Get a value from local storage
+        const choice =parseInt(localStorage.getItem(currentQuestion) );
+
+        console.log(choice); // Output: John
         const question = quiz[currentQuestion];
+        console.log(question)
         questionElement.textContent = question.question;
-        
+        console.log(question.options)
         options.forEach((option, index) => {
+            // if (index===choice){option.click()}
             option.textContent = question.options[index];
-            option.onclick = () => selectOption(index);
+            option.onclick = () => { selectOption(index)};
         });
     }
 
     function selectOption(selectedIndex) {
         const question = quiz[currentQuestion];
-        const correctIndex = question.answer;
-
-        if (selectedIndex === correctIndex) {
+        const correctIndex = question.correct_answer;
+        localStorage.setItem(currentQuestion.toString() , selectedIndex.toString());
+        
+        if (question.options[selectedIndex] === correctIndex) {
             score++;
         }
         
@@ -52,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showResult() {
+        localStorage.clear()
         const totalScore = Math.floor((score / quiz.length) * 100);
         resultDiv.textContent = `You scored ${totalScore}%`;
 
@@ -71,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     nextButton.onclick = () => {
+
        progress.style.width = `${((currentQuestion + 1) / quiz.length) * 100}%`;
         if( nextButton.textContent !== 'Finish' ){
         currentQuestion++;

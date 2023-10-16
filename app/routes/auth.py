@@ -1,7 +1,6 @@
 from flask import session, redirect, url_for
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request,jsonify
 from app.models.user import User
-
 # move this to a separete file at some point
 def login_required(route):
     def decorated_route(*args, **kwargs):
@@ -32,6 +31,9 @@ def login():
                 print(user)
                 # Set the 'logged_in' key in the session to indicate successful login
                 session['logged_in'] = True
+                session['username'] = username
+                session['password'] = password
+                session['id'] = user.id
                 # blueprintname.function_name
                 return redirect(url_for('main.home'))
             else:
@@ -48,5 +50,4 @@ def logout():
     # Clear the session and redirect to the login page
     session.clear()
     return redirect(url_for('auth.login'))
-
 

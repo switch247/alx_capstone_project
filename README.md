@@ -3,6 +3,19 @@
     create venv ->  python -m venv venv
     activate venv ->  venv\Scripts\activate
     install requirements -> pip install -r requirements.txt 
+    Initialize Flask-Migrate:
+        flask db init
+    Create an initial migration:
+       flask db migrate -m "Initial migration"
+    Apply the migration to the database:
+        flask db upgrade
+    ---
+    Whenever you make changes to your database models, generate a new migration:
+        flask db migrate -m "Description of changes"
+    Apply the new migration:
+        flask db upgrade
+    ---
+    By following these steps, you can easily manage database migrations in your Flask application using SQLAlchemy and Flask-Migrate.
     -->
 
 ## Project Overview:

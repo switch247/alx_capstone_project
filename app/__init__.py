@@ -2,7 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from app.config import Config
-
+from flask_migrate import Migrate
 
 # The line `from alx_capstone_projectapp.routes.auth import auth_bp` is importing the `auth_bp`
 # blueprint from the `routes.auth` module in the `alx_capstone_projectapp` package. This blueprint is
@@ -19,14 +19,15 @@ def create_app():
     try:
         app.config.from_object(Config)
         db.init_app(app)
+        migrate = Migrate(app, db)
         # print(db)
         from app.routes.main import main
-        
         from app.routes.auth import auth_bp
+        from app.routes.user import user_bp
 
         app.register_blueprint(main)
         app.register_blueprint(auth_bp)
-
+        app.register_blueprint(user_bp)
         try:
             # print(app.app_context())
             with app.app_context():

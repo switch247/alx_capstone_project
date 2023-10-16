@@ -1,19 +1,99 @@
+{%extends 'base.html'%}
+{%block head%}
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/footer.css') }}"/> -->
+{%endblock%}
 
-{%block footer%}
+{%block body%}
 
-<footer class="d-flex flex-wrap justify-content-between align-items-center py-3  mt-4 border-top   position-fixed bottom-0 bg-dark " style="max-height: 60px; width: 100vw;">
-    <div class="col-md-4 d-flex align-items-center">
-      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-      </a>
-      <span class="mb-3 mb-md-0 text-decoration-none text-white">© 2022 Company, Inc</span>
+<footer>
+  <div class="container">
+    <div class="subscribe grid">
+      <div class="box">
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Sign up for our e-mail to get latest news.</p>
+      </div>
+      <div class="box">
+        <div class="input flex">
+          <input type="text" placeholder="Your Email Address">
+          <span>Sign Up</span>
+        </div>
+      </div>
+      <div class="box">
+        <h2>Follow Us on</h2>
+        <ul>
+          <li> <i class="fa fa-facebook"></i> </li>
+          <li> <i class="fa fa-instagram"></i> </li>
+          <li> <i class="fa fa-twitter"></i> </li>
+          <li> <i class="fa fa-youtube"></i> </li>
+        </ul>
+      </div>
     </div>
 
-    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li class="ms-3"><a class="text-muted text-white" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-      <li class="ms-3"><a class="text-muted text-white" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-      <li class="ms-3"><a class="text-muted text-white" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
-    </ul>
+    <hr>
+
+    <div class="content grid">
+      <div class="box">
+        <h1>QUIZZ</h1>
+        <h4>Nedd Help?</h4>
+        <p>izzyabenabrown@gmail.com
+          0123456789</p>
+      </div>
+
+      <div class="box">
+        <div class="heading">
+          <h2>Information</h2>
+        </div>
+        <ul>
+          <li> Wishlist</li>
+          <li> Contact Us</li>
+          <li> About Us</li>
+          <li> Privacy Policy</li>
+          <li> Frequently Questions</li>
+          <li> Categories</li>
+        </ul>
+      </div>
+      <div class="box">
+        <div class="heading">
+          <h2>Categories</h2>
+        </div>
+        <ul>
+          <li> Fun</li>
+          <li>General</li>
+          <li> Science</li>
+          <li> Art</li>
+          <li> Social</li>
+        </ul>
+      </div>
+      <div class="box">
+        <div class="heading">
+          <h2>About Us</h2>
+        </div>
+        <p> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="items">
+      <div class="legal">
+        <p>Copyright (c) 2023 Copyright Holder All Rights Reserved.</p>
+      </div>
+      <div class="item content grid">
+        <div class="img">
+          <img src="https://img.icons8.com/color/48/000000/mastercard.png" />
+        </div>
+        <div class="img">
+          <img src="https://img.icons8.com/color/48/000000/paypal.png" />
+        </div>
+        <div class="img">
+          <img src="https://img.icons8.com/fluency/48/000000/visa.png" />
+        </div>
+        <div class="img">
+          <img src="https://img.icons8.com/color/48/000000/amex.png" />
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 
-  {%endblock%}
+{%endblock%}
