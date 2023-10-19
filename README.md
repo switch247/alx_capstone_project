@@ -3,6 +3,8 @@
     create venv ->  python -m venv venv
     activate venv ->  venv\Scripts\activate
     install requirements -> pip install -r requirements.txt 
+    
+    
     Initialize Flask-Migrate:
         flask db init
     Create an initial migration:
