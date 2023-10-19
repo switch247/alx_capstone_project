@@ -132,7 +132,7 @@ a {
 
 header {
   position: relative;
-  height: 15vh;
+  height: 10vh;
   background: black;
   color: white;
   /* background: #fff;
@@ -142,9 +142,9 @@ header {
 }
 
 .logo img {
-  width: 50px;
+  width: 100px;
   height: 50px;
-  margin-right: 20px;
+  /* margin-right: 20px; */
   margin-top: 10px;
 }
 
@@ -274,7 +274,7 @@ img {
 }
 
 .home {
-  background-image: url("images/left.jpg");
+  background-image: url("../images/left.jpg");
   background-repeat: no-repeat;
   background-position: right;
   background-size: cover;
@@ -298,6 +298,7 @@ img {
   margin-top: 40px;
   line-height: 70px;
   margin-bottom: 30px;
+  color: tomato;
 }
 
 button {
@@ -397,14 +398,19 @@ button {
 /*---------product-----------*/
 /*---------categories-----------*/
 .categories {
-  background: #eff5fe;
+  background: transparent;
   padding-top: 50px;
   padding-bottom: 50px;
 }
 
 .categories .box {
+  /* width: 250px;
+  height: 250px; ; */
   position: relative;
   color: #fff;
+}
+.categories .box:hover{
+  background-color: rgba(252, 231, 231, 0.05);
 }
 
 .categories h3 {

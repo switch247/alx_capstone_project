@@ -9,8 +9,14 @@ from app.models.leaderboard import Leaderboard
 import json
 
 main = Blueprint('main', __name__)
+import os
 
-with open('data.json') as json_file:
+# Get the parent directory of your Flask app
+parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Construct the file path to data.json in the parent folder
+data_file_path = os.path.join(parent_dir, 'data.json')
+with open(data_file_path) as json_file:
     quizzes = json.load(json_file)
 
     # AKfycbzWxARHNujCAnsZhUiK_FWdm6nodsGKm4dplFzdBgkTCwBuUuNopFbAR6xxiXasIHX0Lw
@@ -32,29 +38,28 @@ with open('data.json') as json_file:
         return render_template('pages/home.html',quizzes=quizzes)
     @main.route('/quiz', methods=['GET'])
     def hub():
-        return render_template('pages/hub.html',quizzes=quizzes)
+        page = request.args.get('page', default=1, type=int)
+        items_per_page = 6
+        def separate_array(arr, x=6):
+            return [arr[i:i+x] for i in range(0, len(arr), x)]
+        separated = separate_array(quizzes, items_per_page)
+        new_quiz = separated[page-1]
+        total_items = len(separated[page-1])
+        total_pages = len(separated)
+        print([len(i) for i in separated])
+        return render_template('pages/hub.html',quizzes=new_quiz, page=page, total_pages=total_pages)
+    
     @main.route('/quiz/<int:quiz_id>', methods=['GET', 'POST'])
     @login_required
     def quiz(quiz_id):
         if quiz_id > len(quizzes):
             return "Quiz not found"
-        # if request.method == 'POST':
-        #     score = 0
-        #     num_questions = quizzes[quiz_id - 1]['num_questions']
-        #     for i in range(num_questions):
-        #         answer = request.form.get(f'question_{i+1}')
-        #         if answer is not None and int(answer) == quizzes[quiz_id - 1]['questions'][i]['answer']:
-        #             score += 1
-
-        #     leaderboard.append({'quiz_id': quiz_id, 'score': score})
-
-        #     return redirect(url_for('leaderboard_func'))
         email = session.get('email')
-        leaderboard_entry = Leaderboard.query.filter_by(email=email, quiz_id=quizzes[quiz_id - 1]).first()
+        leaderboard_entry = Leaderboard.query.filter_by(email=email, quiz_id=quiz_id).first()
         if leaderboard_entry:
-            return render_template('pages/quiz.html',taken=True, quiz=quizzes[quiz_id - 1])
+            return render_template('pages/quiz.html', taken="Restart", quiz=quizzes[quiz_id - 1])
         else:
-            return render_template('pages/quiz.html', quiz=quizzes[quiz_id - 1])
+            return render_template('pages/quiz.html', taken= "Start", quiz=quizzes[quiz_id - 1])
     @main.route('/leaderboard', methods=['POST'])
     def add_leaderboard_entry_route():
         try:

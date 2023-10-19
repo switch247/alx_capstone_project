@@ -6,7 +6,7 @@
         </div>
 
         <div class="content grid mtop">
-            {% for quiz in quizzes %}
+            {% for quiz in quizzes[-6:] %}
             <div class="box">
                 <img src="{{ quiz.image }}" alt="">
                 <div class="text">
@@ -16,7 +16,6 @@
                         {{ category }}<br>
                     {% endfor %}
                 </p>
-
                     <div class="link">
                         <a href="/quiz/{{ loop.index }}" class="btn btn-primary">Take Quiz</a>
                         <span>By admin, Jun 05, 2023</span>
@@ -28,7 +27,6 @@
 
     </div>
    
-
 
 </section>
 

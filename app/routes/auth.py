@@ -77,4 +77,3 @@ def logout():
     # Clear the session and redirect to the login page
     session.clear()
     return redirect(url_for('main.home'))
-
