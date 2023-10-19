@@ -1,3 +1,9 @@
+"""
+    The `create_app` function is used to create and configure a Flask application, including setting up
+    CORS, database, and registering blueprints for different routes.
+    :return: The function `create_app()` returns the Flask application object `app` after registering
+    the blueprints and initializing the database.
+"""
 from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy

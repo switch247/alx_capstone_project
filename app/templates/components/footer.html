@@ -13,10 +13,13 @@
         <p>Sign up for our e-mail to get latest news.</p>
       </div>
       <div class="box">
+        <form name="submit-to-google-sheet">
         <div class="input flex">
-          <input type="text" placeholder="Your Email Address">
-          <span>Sign Up</span>
-        </div>
+          <input type="email" name="Email" placeholder="Your Email Address" required>
+          <span id="submitSpan">sign up</span>
+          <button id="btn"  class="hidden" >sub</button>
+      </div>
+      </form>
       </div>
       <div class="box">
         <h2>Follow Us on</h2>
@@ -96,4 +99,23 @@
   </div>
 </footer>
 
+<script>
+
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzWxARHNujCAnsZhUiK_FWdm6nodsGKm4dplFzdBgkTCwBuUuNopFbAR6xxiXasIHX0Lw/exec'
+  const form = document.forms['submit-to-google-sheet']
+  
+  const submitSpan = document.getElementById('submitSpan');
+  const button = document.getElementById('btn')
+  submitSpan.addEventListener('click', function() {
+    button.click();
+    button.disabled=true
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {alert('Success!', response);submitSpan.disabled=false;})
+      .catch(error => {alert('Error!', error.message);submitSpan.disabled=false;})
+  })
+</script>
 {%endblock%}

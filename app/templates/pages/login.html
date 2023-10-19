@@ -35,21 +35,29 @@ Login Page
           <div class="box">
             <label>Email</label>
             <i class="fas fa-envelope-open"></i>
-            <input type="text" placeholder="username" name="username" >
+            <input type="email" placeholder="email" name="email" required>
           </div>
           <div class="box">
             <label>Password</label>
             <i class="fas fa-lock"></i>
-            <input type="password" name="password" placeholder="Enter your password">
+            <input type="password" name="password" placeholder="Enter your password" required>
           </div>
           <div class="box flex">
-            <div class="input flex">
+            <!-- <div class="input flex">
               <input type="checkbox">
               <span>Remember me</span>
-            </div>
-            <a href="#">Forget password?</a>
+            </div> -->
+            <a href="/register">Register</a>
           </div>
           <button>Log in</button>
+          <div>
+            {% if errors %}
+              {% for error in errors %}
+                  {{ error }}
+              {% endfor %}
+            {% endif %}
+
+          </div>
         </form>
       </div>
     </div>

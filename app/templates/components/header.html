@@ -32,7 +32,8 @@
           <i class="fa-brands fa-discord"></i>
         </div>
         <div class="login">
-          <a id="username" class="btn btn-primary">LOGIN</a>
+          <a id="login" href="/login" class="btn btn-primary">LOGIN</a>
+          <a id="username" href="/logout" class="hidden btn btn-primary"></a>
         </div>
       </div>
     </div>
@@ -46,20 +47,20 @@
           </div>
           <ul class="nav-menu">
             <li class="nav-item">
-              <a href="#" class="nav-link">Home</a>
+              <a href="/" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Services</a>
+              <a href="/quiz" class="nav-link">Quizes</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">Blog</a>
+              <a href="/leaderboard" class="nav-link">Leaderboards</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="#" class="nav-link">About</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">Contact</a>
-            </li>
+            </li> -->
           </ul>
           <div class="cart">
             <i class="fa-regular fa-bell"></i>
@@ -89,6 +90,7 @@
 
 
     <script defer>
+      let l = document.getElementById('login')
         let x = document.getElementById('username')
         // console.log(x)
         fetch('/api/users/me')
@@ -97,7 +99,9 @@
         // Handle the response data
         // console.log(data);
         if(data){
+          l.classList.toggle('hidden')
           x.innerHTML=data.username
+          x.classList.toggle('hidden')
         }
         
         

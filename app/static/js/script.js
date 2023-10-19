@@ -1,86 +1,97 @@
-const startButton = document.getElementById('start-btn');
-const questionContainer = document.getElementById('question-container');
-const questionElement = document.getElementById('question');
-const optionsButtons = document.getElementById('options').querySelectorAll('.btn');
-const scoreContainer = document.getElementById('score-container');
-const scoreElement = document.getElementById('score');
+var q= document.getElementById('p').innerText
+var validJsonString = q.replace(/'/g, '"');
+var quizData = JSON.parse(validJsonString)
+console.log(quizData, quizData.length)
 
+// Get quiz data from local storage
+// const quizData = JSON.parse(localStorage.getItem('quiz'));
+
+
+// Get elements
+const questionElement = document.getElementById('question');
+const optionsElement = document.getElementById('options');
+const prevButton = document.getElementById('prev-button');
+const nextButton = document.getElementById('next-button');
+const resultElement = document.getElementById('result');
+
+
+// Initialize current question index and score
 let currentQuestionIndex = 0;
 let score = 0;
 
-startButton.addEventListener('click', startQuiz);
-optionsButtons.forEach(button => {
-    button.addEventListener('click', selectOption);
+// Load question and options
+function loadQuestion() {
+  const currentQuestion = quizData[currentQuestionIndex];
+  questionElement.textContent = currentQuestion.question;
+
+  optionsElement.innerHTML = '';
+  currentQuestion.options.forEach((option, index) => {
+    const button = document.createElement('button');
+    button.classList.add('btn')
+    button.textContent = option;
+    button.disabled = option === localStorage.getItem(`selectedOption_${currentQuestionIndex}`);
+
+    button.addEventListener('click', () => selectOption(index));
+    optionsElement.appendChild(button);
+  });
+
+  updateButtons();
+}
+
+// Select an option
+function selectOption(optionIndex) {
+  const currentQuestion = quizData[currentQuestionIndex];
+  const selectedOption = currentQuestion.options[optionIndex];
+
+  // Store selected option in local storage
+  localStorage.setItem(`selectedOption_${currentQuestionIndex}`, selectedOption);
+
+  updateButtons();
+}
+
+// Update previous and next buttons
+function updateButtons() {
+  prevButton.disabled = currentQuestionIndex === 0;
+  nextButton.disabled = currentQuestionIndex === quizData.length - 1;
+}
+
+// Go to the previous question
+function goToPreviousQuestion() {
+  currentQuestionIndex--;
+  loadQuestion();
+}
+
+// Go to the next question
+function goToNextQuestion() {
+  currentQuestionIndex++;
+  loadQuestion();
+}
+
+// Calculate and display the score
+function calculateScore() {
+  score = 0;
+  quizData.forEach((question, index) => {
+    const selectedOption = localStorage.getItem(`selectedOption_${index}`);
+    if (selectedOption === question.correct_answer) {
+      score++;
+    }
+  });
+
+  // Display the score
+  resultElement.textContent = `Your Score: ${score}`;
+
+  // Clear local storage
+  localStorage.clear();
+}
+
+// Event listeners
+prevButton.addEventListener('click', goToPreviousQuestion);
+nextButton.addEventListener('click', goToNextQuestion);
+nextButton.addEventListener('click', () => {
+  if (currentQuestionIndex === quizData.length - 1) {
+    calculateScore();
+  }
 });
 
-function startQuiz() {
-    startButton.classList.add('hide');
-    questionContainer.classList.remove('hide');
-    scoreContainer.classList.add('hide');
-    currentQuestionIndex = 0;
-    score = 0;
-    showQuestion();
-}
-
-function showQuestion() {
-    resetOptions();
-    const question = questions[currentQuestionIndex];
-    questionElement.innerText = question.question;
-    optionsButtons.forEach((button, index) => {
-        button.innerText = question.options[index];
-    });
-}
-
-function resetOptions() {
-    optionsButtons.forEach(button => {
-        button.classList.remove('correct', 'wrong');
-    });
-}
-
-function selectOption(e) {
-    const selectedButton = e.target;
-    const question = questions[currentQuestionIndex];
-    const selectedOption = question.options.indexOf(selectedButton.innerText);
-    if (selectedOption === question.answer) {
-        selectedButton.classList.add('correct');
-        score++;
-    } else {
-        selectedButton.classList.add('wrong');
-    }
-    setTimeout(1000)
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
-        setTimeout(showQuestion, 1000);
-    } else {
-        showScore();
-    }
-}
-
-function showScore() {
-    questionContainer.classList.add('hide');
-    scoreContainer.classList.remove('hide');
-    scoreElement.innerText = score;
-}
-
-const questions = [
-    {
-        question: 'Question 1',
-        options: ['A', 'Option 2', 'Option 3', 'Option 4'],
-        answer: 0
-    },
-    {
-        question: 'Question 2',
-        options: ['Option 1', 'B', 'Option 3', 'Option 4'],
-        answer: 1
-    },
-    {
-        question: 'Question 3',
-        options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
-        answer: 2
-    },
-    {
-        question: 'Question 4',
-        options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
-        answer: 3
-    }
-];
+// Load initial question
+loadQuestion();

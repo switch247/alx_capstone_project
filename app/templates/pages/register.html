@@ -22,34 +22,50 @@ Login Page
             It's that simple.</h1>
         </div>
         <ul>
-          <li> <a href="#">Home</a> </li>
-          <li> <a href="#">About</a> </li>
-          <li> <a href="#">Contact</a> </li>
+          <li> <a href="#">Just</a> </li>
+          <li> <a href="#">Do</a> </li>
+          <li> <a href="#">It</a> </li>
         </ul>
       </div>
       <div class="right">
-        <h3>Welcome Back!</h3>
+        <h3>Welcome!</h3>
         <h2>Live the experience</h2>
 
         <form method="post"  action="{{ url_for('auth.register') }}">
+          
           <div class="box">
             <label>Email</label>
             <i class="fas fa-envelope-open"></i>
-            <input type="text" placeholder="username" name="username" >
+            <input type="email" placeholder="email" name="email" required>
+          </div>
+          <div class="box">
+            <label>Username</label>
+            <i class="fas fa-envelope-open"></i>
+            <input type="text" placeholder="username" name="username" required>
           </div>
           <div class="box">
             <label>Password</label>
             <i class="fas fa-lock"></i>
-            <input type="password" name="password" placeholder="Enter your password">
+            <input type="password" name="password" placeholder="Enter your password" required>
           </div>
+        
           <div class="box flex">
-            <div class="input flex">
+            <!-- <div class="input flex">
               <input type="checkbox">
               <span>Remember me</span>
-            </div>
-            <a href="#">Forget password?</a>
+            </div> -->
+            <a href="/login">already have an account?</a>
           </div>
-          <button>Log in</button>
+          <div>
+            {% if errors %}
+              {% for error in errors %}
+                  {{ error }}
+              {% endfor %}
+            {% endif %}
+
+          </div>
+          <button>register</button>
+         
         </form>
       </div>
     </div>
