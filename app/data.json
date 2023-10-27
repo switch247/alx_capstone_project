@@ -10,26 +10,32 @@
             "question": "What is the capital of France?",
             "options": ["Paris", "London", "Berlin", "Madrid"],
             "correct_answer": "Paris"
+            ,"hint":"example hint"
           },
           {
             "question": "Who painted the Mona Lisa?",
             "options": ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso", "Michelangelo"],
             "correct_answer": "Leonardo da Vinci"
+            ,"hint":"example hint"
+            
           },
           {
             "question": "Which planet is known as the Red Planet?",
             "options": ["Mars", "Jupiter", "Venus", "Mercury"],
             "correct_answer": "Mars"
+            ,"hint":"example hint"
           },
           {
             "question": "Who wrote the play Hamlet?",
             "options": ["William Shakespeare", "Jane Austen", "Mark Twain", "Charles Dickens"],
             "correct_answer": "William Shakespeare"
+            ,"hint":"example hint"
           },
           {
             "question": "What is the currency of Japan?",
             "options": ["Yen", "Euro", "Dollar", "Pound"],
             "correct_answer": "Yen"
+            ,"hint":"example hint"
           }
         ]
       },
@@ -120,7 +126,7 @@
             "correct_answer": "Nile"
           },
           {
-            "question": "Which country is known as the 'Land of the Rising Sun'?",
+            "question": "Which country is known as the Land of the Rising Sun?",
             "options": ["Japan", "China", "India", "South Korea"],
             "correct_answer": "Japan"
           },
@@ -179,7 +185,7 @@
         "number_of_questions": 5,
         "questions": [
           {
-            "question": "Who directed the movie 'The Shawshank Redemption'?",
+            "question": "Who directed the movie The Shawshank Redemption?",
             "options": ["Frank Darabont", "Martin Scorsese", "Steven Spielberg", "Quentin Tarantino"],
             "correct_answer": "Frank Darabont"
           },
@@ -189,17 +195,17 @@
             "correct_answer": "Parasite"
           },
           {
-            "question": "Who played the character of James Bond in the film 'Casino Royale'?",
+            "question": "Who played the character of James Bond in the film Casino Royale?",
             "options": ["Daniel Craig", "Pierce Brosnan", "Sean Connery", "Roger Moore"],
             "correct_answer": "Daniel Craig"
           },
           {
-            "question": "Which actor won an Oscar for portraying the Joker in 'The Dark Knight'?",
+            "question": "Which actor won an Oscar for portraying the Joker in The Dark Knight?",
             "options": ["Heath Ledger", "Joaquin Phoenix", "Jared Leto", "Jack Nicholson"],
             "correct_answer": "Heath Ledger"
           },
           {
-            "question": "Which movie features the quote 'May the Force be with you'?",
+            "question": "Which movie features the quote May the Force be with you?",
             "options": ["Star Wars", "The Godfather", "Forrest Gump", "Titanic"],
             "correct_answer": "Star Wars"
           }
@@ -213,12 +219,12 @@
         "number_of_questions": 5,
         "questions": [
           {
-            "question": "Who is known as the 'King of Pop'?",
+            "question": "Who is known as the King of Pop?",
             "options": ["Michael Jackson", "Elvis Presley", "Frank Sinatra", "Prince"],
             "correct_answer": "Michael Jackson"
           },
           {
-            "question": "Which band is famous for the hit song 'Bohemian Rhapsody'?",
+            "question": "Which band is famous for the hit song Bohemian Rhapsody?",
             "options": ["Queen", "The Beatles", "Led Zeppelin", "The Rolling Stones"],
             "correct_answer": "Queen"
           },
@@ -228,7 +234,7 @@
             "correct_answer": "Chris Martin"
           },
           {
-            "question": "Which singer released the album 'Lemonade' in 2016?",
+            "question": "Which singer released the album Lemonade in 2016?",
             "options": ["Beyoncé", "Taylor Swift", "Adele", "Rihanna"],
             "correct_answer": "Beyoncé"
           },
@@ -247,27 +253,27 @@
         "number_of_questions": 5,
         "questions": [
           {
-            "question": "Who wrote the novel 'Pride and Prejudice'?",
+            "question": "Who wrote the novel Pride and Prejudice?",
             "options": ["Jane Austen", "Emily Brontë", "Charlotte Brontë", "Virginia Woolf"],
             "correct_answer": "Jane Austen"
           },
           {
-            "question": "Which author wrote the 'Harry Potter' book series?",
+            "question": "Which author wrote the Harry Potter book series?",
             "options": ["J.K. Rowling", "Stephen King", "George R.R. Martin", "Dan Brown"],
             "correct_answer": "J.K. Rowling"
           },
           {
-            "question": "Who is the author of the play 'Romeo and Juliet'?",
+            "question": "Who is the author of the play Romeo and Juliet?",
             "options": ["William Shakespeare", "Oscar Wilde", "Arthur Miller", "Tennessee Williams"],
             "correct_answer": "William Shakespeare"
           },
           {
-            "question": "Which novel begins with the line 'It was a bright cold day in April, and the clocks were striking thirteen'?",
+            "question": "Which novel begins with the line It was a bright cold day in April, and the clocks were striking thirteen?",
             "options": ["1984 by George Orwell", "Brave New World by Aldous Huxley", "Fahrenheit 451 by Ray Bradbury", "The Catcher in the Rye by J.D. Salinger"],
             "correct_answer": "1984 by George Orwell"
           },
           {
-            "question": "Who is the author of the 'Lord of the Rings' trilogy?",
+            "question": "Who is the author of the Lord of the Rings trilogy?",
             "options": ["J.R.R. Tolkien", "C.S. Lewis", "Philip Pullman", "George R.R. Martin"],
             "correct_answer": "J.R.R. Tolkien"
           }
@@ -281,7 +287,7 @@
         "number_of_questions": 5,
         "questions": [
           {
-            "question": "Who painted the famous artwork 'The Starry Night'?",
+            "question": "Who painted the famous artwork The Starry Night?",
             "options": ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Claude Monet"],
             "correct_answer": "Vincent van Gogh"
           },
@@ -291,7 +297,7 @@
             "correct_answer": "Leonardo da Vinci"
           },
           {
-            "question": "Who composed the symphony 'Symphony No. 5 in C minor'?",
+            "question": "Who composed the symphony Symphony No. 5 in C minor?",
             "options": ["Ludwig van Beethoven", "Wolfgang Amadeus Mozart", "Johann Sebastian Bach", "Franz Schubert"],
             "correct_answer": "Ludwig van Beethoven"
           }]},
@@ -313,7 +319,7 @@
             "correct_answer": "Kareem Abdul-Jabbar"
           },
           {
-            "question": "Which tennis player has won the most Grand Slam titles in the men's singles category?",
+            "question": "Which tennis player has won the most Grand Slam titles in the mens singles category?",
             "options": ["Roger Federer", "Rafael Nadal", "Novak Djokovic", "Pete Sampras"],
             "correct_answer": "Roger Federer"
           },
@@ -342,7 +348,7 @@
             "correct_answer": "Au"
           },
           {
-            "question": "Which planet is known as the 'Red Planet'?",
+            "question": "Which planet is known as the Red Planet?",
             "options": ["Mars", "Venus", "Jupiter", "Saturn"],
             "correct_answer": "Mars"
           },
@@ -415,7 +421,7 @@
             "correct_answer": "Pacific Ocean"
           },
           {
-            "question": "Which country is known as the 'Land of the Rising Sun'?",
+            "question": "Which country is known as the Land of the Rising Sun?",
             "options": ["Japan", "China", "South Korea", "Vietnam"],
             "correct_answer": "Japan"
           },
@@ -444,7 +450,7 @@
             "correct_answer": "Elon Musk"
           },
           {
-            "question": "What does the acronym 'URL' stand for?",
+            "question": "What does the acronym URL stand for?",
             "options": ["Uniform Resource Locator", "Universal Reference Language", "Unified Research Link", "User Retrieval Line"],
             "correct_answer": "Uniform Resource Locator"
           },
@@ -454,7 +460,7 @@
             "correct_answer": "IBM"
           },
           {
-            "question": "What does 'HTML' stand for in web development?",
+            "question": "What does HTML stand for in web development?",
             "options": ["Hypertext Markup Language", "Hyperlink and Text Markup Language", "Home Tool Markup Language", "Hyperloop Transport and Machine Learning"],
             "correct_answer": "Hypertext Markup Language"
           },

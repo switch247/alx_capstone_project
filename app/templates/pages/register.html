@@ -14,7 +14,7 @@ Login Page
     <div class="container ">
       <div class="left">
         <div class="logo">
-          <img src="images/logo.png" alt="">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="">
         </div>
         <div class="text">
           <h1>Go all the way. <br>
@@ -40,7 +40,7 @@ Login Page
           </div>
           <div class="box">
             <label>Username</label>
-            <i class="fas fa-envelope-open"></i>
+            <i class="fa-solid fa-user"></i>
             <input type="text" placeholder="username" name="username" required>
           </div>
           <div class="box">

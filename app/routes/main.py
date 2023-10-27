@@ -1,8 +1,6 @@
 from flask import Blueprint, jsonify, request,flash,abort,redirect,url_for,render_template,session
 from app import db
 import json
-# from data import quizzes
-# from app.models import user.User, user.user ...
 from app.models.user import User
 from app.routes.auth import login_required
 from app.models.leaderboard import Leaderboard
@@ -57,7 +55,7 @@ with open(data_file_path) as json_file:
         email = session.get('email')
         leaderboard_entry = Leaderboard.query.filter_by(email=email, quiz_id=quiz_id).first()
         if leaderboard_entry:
-            return render_template('pages/quiz.html', taken="Restart", quiz=quizzes[quiz_id - 1])
+            return render_template('pages/quiz.html', taken="Retake", quiz=quizzes[quiz_id - 1])
         else:
             return render_template('pages/quiz.html', taken= "Start", quiz=quizzes[quiz_id - 1])
     @main.route('/leaderboard', methods=['POST'])
@@ -83,10 +81,12 @@ with open(data_file_path) as json_file:
                 new_score_time_ratio = score / time
 
                 if new_score_time_ratio > score_time_ratio:
+                    print('new score')
                     existing_entry.score = score
                     existing_entry.time = time
                     db.session.commit()
             else:
+                print('new entry')
                 new_entry = Leaderboard(email=email, quiz_id=quiz_id, score=score, time=time)
                 db.session.add(new_entry)
                 db.session.commit()
@@ -99,14 +99,5 @@ with open(data_file_path) as json_file:
     def leaderboard_func():
         # leaderboard_sorted = sorted(leaderboard, key=lambda x: x['score'], reverse=True)
         # return render_template('pages/leaderboard.html', leaderboard=leaderboard_sorted)
-        leaderboard_items = Leaderboard.query.order_by(Leaderboard.score / Leaderboard.time).all()
+        leaderboard_items = Leaderboard.query.order_by( Leaderboard.quiz_id ,1/(Leaderboard.score / Leaderboard.time) ).all()
         return render_template('pages/leaderboard.html', leaderboard_items=leaderboard_items)
-
-
-
-
-
-
-
-
-

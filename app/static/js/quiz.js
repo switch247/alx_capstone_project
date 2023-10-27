@@ -12,6 +12,7 @@ const progressBarElement = document.getElementById('progress');
 const timerElement = document.getElementById('timer');
 const hintElement = document.getElementById('hint');
 const hintButtonElement = document.querySelector('.btn-hint');
+const hintSpanElement = document.querySelector('.span-hint');
 const questionElement = document.getElementById('question');
 const optionsElement = document.getElementById('options');
 const restartButtonElement = document.getElementById('restart-button');
@@ -53,6 +54,8 @@ function startQuiz() {
     hintCount = 0;
     score = 0;
     hintButtonElement.classList.remove('hidden');
+    hintSpanElement.classList.remove('hidden');
+    hintSpanElement.innerText = '3'
     timerElement.classList.remove('hidden');
     questionElement.classList.remove('hidden');
     optionsElement.classList.remove('hidden');
@@ -72,8 +75,8 @@ function loadQuestion() {
     optionsElement.innerHTML = '';
     currentQuestion.options.forEach((option, index) => {
         const button = document.createElement('button');
-        button.classList.add('btn') 
-        // button.classList.add('btn-primary')
+        // button.classList.add('btn') 
+        button.classList.add('btn-primary')
         button.textContent = option;
         button.addEventListener('click', () => selectOption(index));
         optionsElement.appendChild(button);
@@ -157,14 +160,17 @@ function showHint() {
   if (hintCount < 3) {
     hintElement.disabled=false
     hintCount++;
-    hintElement.textContent = `Hint: ${quizData[currentQuestionIndex].hint}`;
+    hintElement.textContent = 'Hint: hint Example'
+    // hintElement.textContent = `Hint: ${quizData[currentQuestionIndex].hint}`;
     hintElement.disabled=true
     hintButtonElement.disabled = true;
+    
   }
 
   if (hintCount === 3) {
     hintButtonElement.disabled = true;
   }
+  hintSpanElement.innerText = 3-hintCount
 }
 
 // Go to the next question
@@ -190,12 +196,14 @@ setTimeout(function() {
     stopTOTTimer();
     //   quizElement.classList.add('hidden');
     hintButtonElement.classList.add('hidden');
+    hintSpanElement.classList.add('hidden');
     questionElement.classList.add('hidden');
     optionsElement.classList.add('hidden');
     timerElement.classList.add('hidden');
     // nextButtonElement.classList.add('hidden');
     nextButtonElement.disabled=true
     restartButtonElement.classList.remove('hidden');
+    restartButtonElement.innerText='Restart'
     const totalScore = Math.floor((score / quizData.length) * 100);
     // resultDiv.textContent = `You scored ${totalScore}%`;
     resultElement.textContent = `Your Score: ${score}/${quizData.length} ${totalScore}%`;
@@ -204,7 +212,7 @@ setTimeout(function() {
         optionsElement.removeChild(option);
     });
     console.log(QD.id,totalScore,totalTime)
-    addLeaderboardEntry(QD.id,score,totalTime);
+    addLeaderboardEntry(QD.id,totalScore,totalTime);
 },1000);
 }
 

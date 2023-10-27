@@ -58,7 +58,10 @@ def register():
         # Check if user already exists
         existing_user = User.query.filter_by(email=email).first()
         if existing_user:
-            errors.append('User already exists')
+            errors.append('Email is taken ')
+        existing_username = User.query.filter_by(username=username).first()
+        if existing_username:
+            errors.append('Username taken ')
         # Check password strength
         if len(password) < 8:
             errors.append('Password must be at least 8 characters long')

@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
 </head>
 
 {%extends 'base.html'%}
@@ -19,25 +19,38 @@ Quiz App - Leaderboard
 <section class="blog full">
     <div class="container ">
         <h1>Leaderboard</h1>
-    <table class="table">
-        <tr>
-            <th>Email</th>
-            <th>Quiz ID</th>
-            <th>Score</th>
-            <th>Time</th>
-        </tr>
-        {% for item in leaderboard_items %}
-        <tr>
-            <td>{{ item.email }}</td>
-            <td>{{ item.quiz_id }}</td>
-            <td>{{ item.score }}</td>
-            <td>{{ item.time }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+        <div class="table-container">
+            <table class="table">
+                <tr>
+                    <th><i class="fas fa-envelope-open"></i> Email</th>
+                    <!-- <th><i class="fa-solid fa-arrows-to-dot"></i> Title</th> -->
+                    <th><i class="fa-solid fa-hashtag"></i> Quiz ID</th>
+                    <th><i class="fa-solid fa-arrows-to-dot"></i> Score</th>
+                    <th><i class="fa-regular fa-clock"></i> Time</th>
+                </tr>
+                {% for item in leaderboard_items %}
+                <tr>
+                    <td>{{ item.email }}</td>
+                    <!-- <td>{{ item.title }}</td> -->
+                    <td><a href="/quiz/{{ item.quiz_id }}">{{ item.quiz_id }}</a></td>
+                    <td>{{ item.score }}%</td>
+                    <td>{{ item.time }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
     </div>
 </section>
 
 
 {%include 'components/footer.html'%}
 {%endblock%}
+
+<style>
+    .table-container {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+</style>

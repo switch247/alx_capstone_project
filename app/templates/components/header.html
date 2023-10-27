@@ -5,6 +5,50 @@
 
 
 {%block body%}
+<style>
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    /* background-color: #fefefe; */
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .modal-content h2 {
+    margin-top: 0;
+  }
+  
+  .modal-buttons {
+    margin-top: 20px;
+  }
+  
+  /* Button styles */
+  .btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-secondary {
+    background-color: #ccc;
+  }
+</style>
 
 
   <script>
@@ -21,7 +65,7 @@
 
   <section class="">
     <div id="head" class="flex-center">
-      <div class="left flex-center" >
+      <div class="left flex-center" style="height: 10vh;">
         <span  style="margin-left: 40px;">QUIZZ</span>
         <!-- <span id="username"></span>  -->
       </div>
@@ -31,9 +75,19 @@
           <i class="fa-brands fa-twitter-square"></i>
           <i class="fa-brands fa-discord"></i>
         </div>
-        <div class="login">
-          <a id="login" href="/login" class="btn btn-primary">LOGIN</a>
-          <a id="username" href="/logout" class="hidden btn btn-primary"></a>
+        <div class="login flex-center">
+          <a id="login" href="/login" class="correct" style="padding:1em;" >LOGIN</a>
+          <a id="username" style="padding:1em;" class="hidden" onclick="openModal()"></a>
+        </div>
+      </div>
+    </div>
+    <div id="logoutModal" class="modal">
+      <div class="modal-content">
+        <h2>Confirm Logout</h2>
+        <p>Are you sure you want to logout?</p>
+        <div class="modal-buttons">
+          <button class="btn" onclick="logout()">Yes</button>
+          <button class="btn btn-secondary" onclick="closeModal()">No</button>
         </div>
       </div>
     </div>
@@ -75,6 +129,8 @@
           </div>
         </nav>
       </div>
+
+      
     </header>
     <script>
       const hamburger = document.querySelector(".hamburger");
@@ -91,27 +147,56 @@
 
 
     <script defer>
+      let container = document.querySelector('.login')
       let l = document.getElementById('login')
-        let x = document.getElementById('username')
-        // console.log(x)
-        fetch('/api/users/me')
+      let x = document.getElementById('username')
+      // console.log(x)
+      
+      fetch('/api/users/me')
       .then(response => response.json())
       .then(data => {
         // Handle the response data
         // console.log(data);
         if(data){
+          // console.log(data,typeof(data))
+          localStorage.setItem('user',JSON.stringify(data))
           l.classList.toggle('hidden')
-          x.innerHTML=data.username
+          x.innerHTML=data.username + ' Logout'
+          container.classList.add('wrong')
           x.classList.toggle('hidden')
         }
-        
-        
       })
       .catch(error => {
         // Handle any errors
+        container.classList.add('correct')
         console.error(error);
       });
     
     </script>
+
+
+<script>
+  // Get the modal element
+  var modal = document.getElementById("logoutModal");
+  
+  // Function to open the modal
+  function openModal() {
+    modal.style.display = "block";
+  }
+  
+  // Function to close the modal
+  function closeModal() {
+    modal.style.display = "none";
+  }
+  
+  // Function to perform logout
+  function logout() {
+    // Add your logout logic here
+    localStorage.removeItem("user");
+    // Redirect to "/logout" page
+    window.location.href = "/logout";
+    closeModal();
+  }
+</script>
 
 {%endblock%}

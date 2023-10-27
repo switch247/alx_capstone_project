@@ -37,14 +37,14 @@ def create_user():
     data = request.get_json()
     # print( data)
     # print(data['email'])
-    user1 = User.query.filter( user.email== data['email'] ).all()
+    user1 = User.query.filter_by( email== data['email'] ).all()
     # print(user)
     if user1:
         return (jsonify({'error': 'user already exists'}),409)
     # 409 conflict
     else:
         try:
-            user = user(name=data['name'], phone_number=data['phone_number'], email=data['email'])
+            user = user(name=data['name'], email=data['email'])
             # return user.__dir__()
             db.session.add(user)
             db.session.commit()
